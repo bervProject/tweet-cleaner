@@ -8,11 +8,17 @@ namespace TweetCleaner
     {
         static void Main(string[] args)
         {
-            var userClient = new TwitterClient(Environment.GetEnvironmentVariable("CONSUMER_KEY"), Environment.GetEnvironmentVariable("CONSUMER_SECRET"), Environment.GetEnvironmentVariable("ACCESS_TOKEN"), Environment.GetEnvironmentVariable("ACCESS_SECRET"));
+            var startTime = DateTimeOffset.UtcNow;
+            var userClient = new TwitterClient(Environment.GetEnvironmentVariable("CONSUMER_KEY"),
+                Environment.GetEnvironmentVariable("CONSUMER_SECRET"),
+                Environment.GetEnvironmentVariable("ACCESS_TOKEN"),
+                Environment.GetEnvironmentVariable("ACCESS_SECRET"));
             var deletedTweetTask = CleanMyTimeLine(userClient);
             var unfavTweetTask = Unfav(userClient);
             Task.WaitAll(deletedTweetTask, unfavTweetTask);
             Console.WriteLine($"Deleted {deletedTweetTask.Result}, unfav {unfavTweetTask.Result}");
+            var endTime = DateTimeOffset.UtcNow;
+            Console.WriteLine($"Elapsed time: {(endTime - startTime).TotalSeconds} s");
         }
 
         static async Task<int> CleanMyTimeLine(ITwitterClient userClient)
