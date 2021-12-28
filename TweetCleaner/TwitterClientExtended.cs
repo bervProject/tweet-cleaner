@@ -30,7 +30,7 @@ namespace TweetCleaner
     {
         public static async Task<int> CleanMyTimeLine(this ITwitterClient userClient, MongoClient mongoClient)
         {
-            var database = mongoClient.GetDatabase(Environment.GetEnvironmentVariable("MONGO_DB_NAME", EnvironmentVariableTarget.Machine));
+            var database = mongoClient.GetDatabase(Environment.GetEnvironmentVariable("MONGO_DB_NAME"));
             var collections = database.GetCollection<BsonDocument>("deleted");
             var user = await userClient.Users.GetAuthenticatedUserAsync();
             var tweets = await userClient.Timelines.GetUserTimelineAsync(user);
@@ -59,7 +59,7 @@ namespace TweetCleaner
 
         public static async Task<int> Unfav(this ITwitterClient userClient, MongoClient mongoClient)
         {
-            var database = mongoClient.GetDatabase(Environment.GetEnvironmentVariable("MONGO_DB_NAME", EnvironmentVariableTarget.Machine));
+            var database = mongoClient.GetDatabase(Environment.GetEnvironmentVariable("MONGO_DB_NAME"));
             var collections = database.GetCollection<BsonDocument>("unfav");
             var user = await userClient.Users.GetAuthenticatedUserAsync();
             var tweets = await userClient.Tweets.GetUserFavoriteTweetsAsync(user);
