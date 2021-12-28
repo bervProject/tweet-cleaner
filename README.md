@@ -2,6 +2,10 @@
 
 Tweet Cleaner, remove your last like and tweet.
 
+## Collaborator
+
+* Bervianto Leo Pratama - [Dev.to - berviantoleo](https://dev.to/berviantoleo)
+
 ## Structure
 
 * [TweetCleaner](./TweetCleaner) - Clean up my tweet and un-fav tweets
