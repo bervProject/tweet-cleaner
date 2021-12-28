@@ -32,7 +32,7 @@ sendEmailTask.Wait();
 
 static async Task SendEmail(DateTime now, long total)
 {
-    using var emailClient = new AmazonSimpleEmailServiceClient();
+    using var emailClient = new AmazonSimpleEmailServiceClient(Amazon.RegionEndpoint.APSoutheast1);
     var request = new SendEmailRequest()
     {
         ReplyToAddresses = new List<string> { "bervianto.leo@gmail.com" },
