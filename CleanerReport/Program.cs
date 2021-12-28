@@ -18,8 +18,8 @@ using Amazon.SimpleEmail.Model;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-var mongoDbClient = new MongoClient(Environment.GetEnvironmentVariable("MONGO_CONNECTION_STRING"));
-var database = mongoDbClient.GetDatabase(Environment.GetEnvironmentVariable("MONGO_DB_NAME"));
+var mongoDbClient = new MongoClient(Environment.GetEnvironmentVariable("MONGO_CONNECTION_STRING", EnvironmentVariableTarget.Machine));
+var database = mongoDbClient.GetDatabase(Environment.GetEnvironmentVariable("MONGO_DB_NAME", EnvironmentVariableTarget.Machine));
 var collections = database.GetCollection<BsonDocument>("unfav");
 var now = DateTime.UtcNow;
 var filterBuilder = Builders<BsonDocument>.Filter;
@@ -41,7 +41,7 @@ static async Task SendEmail(DateTime now, long total)
             Body = new Body(new Content($"Total unvaf 7 Days before {now}: {total}")),
             Subject = new Content($"{total} Unfav!")
         },
-        Destination = new Destination(new List<string> { Environment.GetEnvironmentVariable("EMAIL_TARGET") ?? string.Empty }),
+        Destination = new Destination(new List<string> { Environment.GetEnvironmentVariable("EMAIL_TARGET", EnvironmentVariableTarget.Machine) ?? string.Empty }),
         Source = "support@berviantoleo.my.id"
     };
     var response = await emailClient.SendEmailAsync(request);

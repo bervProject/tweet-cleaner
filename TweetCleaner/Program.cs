@@ -16,13 +16,13 @@ using MongoDB.Driver;
 using TweetCleaner;
 using Tweetinvi;
 
-var mongoDbClient = new MongoClient(Environment.GetEnvironmentVariable("MONGO_CONNECTION_STRING"));
+var mongoDbClient = new MongoClient(Environment.GetEnvironmentVariable("MONGO_CONNECTION_STRING", EnvironmentVariableTarget.Machine));
 
 var startTime = DateTimeOffset.UtcNow;
-var userClient = new TwitterClient(Environment.GetEnvironmentVariable("CONSUMER_KEY"),
-    Environment.GetEnvironmentVariable("CONSUMER_SECRET"),
-    Environment.GetEnvironmentVariable("ACCESS_TOKEN"),
-    Environment.GetEnvironmentVariable("ACCESS_SECRET"));
+var userClient = new TwitterClient(Environment.GetEnvironmentVariable("CONSUMER_KEY", EnvironmentVariableTarget.Machine),
+    Environment.GetEnvironmentVariable("CONSUMER_SECRET", EnvironmentVariableTarget.Machine),
+    Environment.GetEnvironmentVariable("ACCESS_TOKEN", EnvironmentVariableTarget.Machine),
+    Environment.GetEnvironmentVariable("ACCESS_SECRET", EnvironmentVariableTarget.Machine));
 var deletedTweetTask = userClient.CleanMyTimeLine(mongoDbClient);
 var unfavTweetTask = userClient.Unfav(mongoDbClient);
 Task.WaitAll(deletedTweetTask, unfavTweetTask);
