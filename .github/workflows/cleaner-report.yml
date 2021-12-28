@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   report_to_me:
-    runs-on: windows-2022
+    runs-on: ubuntu-20.04
     name: "Report to Me!"
     steps:
       - uses: actions/checkout@v2

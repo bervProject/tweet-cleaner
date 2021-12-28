@@ -12,7 +12,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
@@ -39,7 +39,7 @@ jobs:
         # By default, queries listed here will override any specified in a config file.
         # Prefix the list here with "+" to use these queries and those in the config file.
         # queries: ./path/to/local/query, your-org/your-repo/queries@main
-
+        
     - name: Setup .NET Core SDK
       if: ${{ matrix.language == 'csharp' }}
       uses: actions/setup-dotnet@v1
