@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   clean_tweet:
+    name: "Clean the Tweet!"
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -18,7 +19,7 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore
       - name: Clean Up
-        run: dotnet run --project .\TweetCleaner\
+        run: dotnet run --project TweetCleaner
         env:
           ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
           CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}

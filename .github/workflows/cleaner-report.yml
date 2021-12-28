@@ -5,8 +5,9 @@ on:
     - cron:  '30 7 * * 6'
   workflow_dispatch:
 jobs:
-  clean_tweet:
+  report_to_me:
     runs-on: ubuntu-20.04
+    name: "Report to Me!"
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core SDK
@@ -17,8 +18,8 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore
-      - name: Clean Up
-        run: dotnet run --project .\CleanerReport\
+      - name: Report to Me
+        run: dotnet run --project CleanerReport
         env:
           MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
           MONGO_DB_NAME: ${{ secrets.MONGO_DB_NAME }}
