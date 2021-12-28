@@ -1,15 +1,7 @@
 {
   "profiles": {
     "TweetCleaner": {
-      "commandName": "Project",
-      "environmentVariables": {
-        "ACCESS_TOKEN": "",
-        "CONSUMER_SECRET": "",
-        "CONSUMER_KEY": "",
-        "ACCESS_SECRET": "",
-        "MONGO_CONNECTION_STRING": "",
-        "MONGO_DB_NAME": ""
-      }
+      "commandName": "Project"
     }
   }
 }

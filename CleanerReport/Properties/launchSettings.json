@@ -1,12 +1,7 @@
 {
   "profiles": {
     "CleanerReport": {
-      "commandName": "Project",
-      "environmentVariables": {
-        "MONGO_CONNECTION_STRING": "",
-        "MONGO_DB_NAME": "",
-        "EMAIL_TARGET": ""
-      }
+      "commandName": "Project"
     }
   }
 }
