@@ -18,14 +18,14 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore
-      - name: Clean Up
-        run: dotnet run --project TweetCleaner
-        env:
-          ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-          CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
-          CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
-          ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
-          MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
-          MONGO_DB_NAME: ${{ secrets.MONGO_DB_NAME }}
+      # - name: Clean Up
+      #  run: dotnet run --project TweetCleaner
+      #  env:
+      #    ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      #    CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+      #    CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
+      #    ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+      #    MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
+      #    MONGO_DB_NAME: ${{ secrets.MONGO_DB_NAME }}
 
 
