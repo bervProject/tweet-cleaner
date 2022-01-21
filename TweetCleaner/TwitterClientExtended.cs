@@ -30,6 +30,16 @@ namespace TweetCleaner
     {
         public static async Task<int> CleanMyTimeLine(this ITwitterClient userClient, MongoClient mongoClient)
         {
+            if (!Boolean.TryParse(Environment.GetEnvironmentVariable("CLEAN_TWEET"), out var allowClean))
+            {
+                Console.WriteLine("Please provide the CLEAN_TWEET env, with true/false.");
+                return 0;
+            }
+            if (!allowClean)
+            {
+                Console.WriteLine("Please allow CLEAN_TWEET if you want this one.");
+                return 0;
+            }
             var database = mongoClient.GetDatabase(Environment.GetEnvironmentVariable("MONGO_DB_NAME"));
             var collections = database.GetCollection<BsonDocument>("deleted");
             var user = await userClient.Users.GetAuthenticatedUserAsync();
@@ -59,6 +69,17 @@ namespace TweetCleaner
 
         public static async Task<int> Unfav(this ITwitterClient userClient, MongoClient mongoClient)
         {
+            if (!Boolean.TryParse(Environment.GetEnvironmentVariable("UNVAF_TWEET"), out var allowed))
+            {
+                Console.WriteLine("Please provide the UNVAF_TWEET env, with true/false.");
+                return 0;
+            }
+            if (!allowed)
+            {
+                Console.WriteLine("Please allow UNVAF_TWEET if you want this one.");
+                return 0;
+            }
+
             var database = mongoClient.GetDatabase(Environment.GetEnvironmentVariable("MONGO_DB_NAME"));
             var collections = database.GetCollection<BsonDocument>("unfav");
             var user = await userClient.Users.GetAuthenticatedUserAsync();
