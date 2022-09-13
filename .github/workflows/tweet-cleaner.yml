@@ -1,8 +1,8 @@
 name: Tweet Cleaner
 on:
-  schedule:
+#  schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '30 7 * * *'
+#    - cron:  '30 7 * * *'
   workflow_dispatch:
 jobs:
   clean_tweet:
