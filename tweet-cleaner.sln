@@ -7,7 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetCleaner", "TweetCleane
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetCleaner.Test", "TweetCleaner.Test\TweetCleaner.Test.csproj", "{0476A875-4B9E-442C-9015-E7CCB9733D57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanerReport", "CleanerReport\CleanerReport.csproj", "{4F38E17F-AF29-4513-8127-C4613593511F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanerReport", "CleanerReport\CleanerReport.csproj", "{4F38E17F-AF29-4513-8127-C4613593511F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56896BE3-B05C-44A1-B403-0C47752D21BB}"
+	ProjectSection(SolutionItems) = preProject
+		.env.example = .env.example
+		.github\workflows\cleaner-report.yml = .github\workflows\cleaner-report.yml
+		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		README.md = README.md
+		.github\workflows\tweet-cleaner.yml = .github\workflows\tweet-cleaner.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

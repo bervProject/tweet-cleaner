@@ -1,19 +1,19 @@
 name: Tweet Cleaner
 on:
-#  schedule:
+  schedule:
     # * is a special character in YAML so you have to quote this string
-#    - cron:  '30 7 * * *'
+    - cron:  '30 7 * * *'
   workflow_dispatch:
 jobs:
   clean_tweet:
     name: "Clean the Tweet!"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '7.0.x'
       - name: Install dependencies
         run: dotnet restore
       - name: Build
@@ -29,5 +29,4 @@ jobs:
           MONGO_DB_NAME: ${{ secrets.MONGO_DB_NAME }}
           CLEAN_TWEET: false
           UNVAF_TWEET: true
-
-
+          
