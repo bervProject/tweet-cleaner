@@ -1,19 +1,19 @@
 name: Cleaner Report
 on:
-#  schedule:
+  schedule:
     # * is a special character in YAML so you have to quote this string
-#    - cron:  '30 7 * * 6'
+    - cron:  '30 7 * * 6'
   workflow_dispatch:
 jobs:
   report_to_me:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     name: "Report to Me!"
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '7.0.x'
       - name: Install dependencies
         run: dotnet restore
       - name: Build
@@ -27,6 +27,3 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-
-
-
