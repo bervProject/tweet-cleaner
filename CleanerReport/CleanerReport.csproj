@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.100.106" />
+    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.100.107" />
     <PackageReference Include="MongoDB.Driver" Version="2.19.1" />
   </ItemGroup>
 
